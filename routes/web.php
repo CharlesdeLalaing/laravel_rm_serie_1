@@ -1,6 +1,10 @@
 <?php
 
+use Hamcrest\Type\IsInteger;
+use Hamcrest\Type\IsNumeric;
 use Illuminate\Support\Facades\Route;
+
+use function PHPSTORM_META\type;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/charles', function () {
     return view('charles');
+});
+
+
+Route::get('/{var}', function ($text) {
+    if (is_numeric($text)) {
+        $muliply = 4 * $text;
+        return '4 * ' . $text . ' = ' . $muliply;
+    } else {
+        return 'impossible equation';
+    }
 });
